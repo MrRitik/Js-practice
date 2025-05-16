@@ -1,3 +1,4 @@
+"use strict";
 // call stack
 
 function fun1() {
@@ -55,6 +56,26 @@ scope1();
 console.log(b1); //Variables declared with var do not have block scope only let and const have block scope.
 
 // let var const
+// var
+var n = 10;
+console.log("var value " + n);
+
+var n = 5; //reassigning is allowed
+console.log("var value " + n);
+
+function varTest() {
+  var v = 10;
+  console.log("var value in funactional scope " + v);
+}
+varTest();
+// console.log("var value outside funactional scope " + v); reference error
+
+// let
+
+let l = 10;
+l = 20; // Value can be updated
+// let l = 15; //can not redeclare
+console.log("this is let value " +l);
 
 //JS operators
 
@@ -167,25 +188,25 @@ let student = {
 student.getName();
 
 const dog = {
-  name: "tuffy"
+  name: "tuffy",
 };
 
 dog.bark = function () {
   console.log("Woof! I am " + this.name);
-  console.log(this) // output {name: "tuffy", bark: f}
+  console.log(this); // output {name: "tuffy", bark: f}
 };
 
-dog.bark(); 
+dog.bark();
 
 // array methods
 
 let fruits = ["apple", "banana"];
 fruits.push("orange");
 
-console.log(fruits)
+console.log(fruits);
 console.log(fruits.length);
-console.log(fruits.toString())
-console.log(fruits.join("|"))
+console.log(fruits.toString());
+console.log(fruits.join("|"));
 
 fruits.pop();
 console.log(fruits);
@@ -195,3 +216,63 @@ console.log(fruits);
 
 fruits.shift(); //Remove from the beginning
 console.log(fruits);
+
+// this keyword
+
+// Global space
+
+console.log(this); // window (global object)
+
+// this inside funcation
+
+function fun3() {
+  console.log(this);
+}
+
+fun3(); // window but in use strict it is undifined
+// substuation it will replace the value of this keyword to global object if it is undifened or null except in strict mode
+
+window.fun3(); // window
+
+// this inside object
+
+const person = {
+  name: "Ritik",
+  printName(last) {
+    console.log("Hello my name is " + this.name + " " + last);
+  },
+};
+
+person.printName("Rajput");
+
+const person2 = {
+  name: "Sahil",
+};
+
+person.printName.call(person2, "singh");
+
+// this in arrow funcation
+
+const obj1 = {
+  name: "Ram",
+  x: () => {
+    console.log(this);
+  },
+};
+
+obj1.x(); //  arrow functions don't have their own this, but instead, inherit it from the surrounding context.
+
+const obj2 = {
+  name: "Ram",
+  x: function () {
+    const y = () => {
+      console.log(this);
+    };
+    y();
+  },
+};
+
+obj2.x(); // igt will display {name: "Ram",x:f} , enclosing lexcial context
+
+// this in DOM
+// this inside DOM reference to HTML element
