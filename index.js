@@ -276,3 +276,5 @@ obj2.x(); // igt will display {name: "Ram",x:f} , enclosing lexcial context
 
 // this in DOM
 // this inside DOM reference to HTML element
+
+
