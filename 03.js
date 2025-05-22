@@ -153,3 +153,31 @@ function a() {
   b();
 }
 a();
+
+// JSON & APIs
+async function fetchUsers() {
+  try {
+    const response = await fetch(
+      "https://fake-json-api.mock.beeceptor.com/users"
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Display all user names
+    data.forEach((user) => {
+      console.log("Name:", user.name);
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error.message);
+  }
+}
+
+fetchUsers();
+  
+
+
+
