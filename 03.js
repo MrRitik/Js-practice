@@ -40,47 +40,48 @@ console.log("");
 
 // forEach
 
-arr.forEach(num => { // it does not return array like map and filter
-    console.log(num);
-})
+arr.forEach((num) => {
+  // it does not return array like map and filter
+  console.log(num);
+});
 
-const double = arr.forEach(num => {
-    num = num * 2
-})
+const double = arr.forEach((num) => {
+  num = num * 2;
+});
 console.log(double); // undifend
 
 // Map()
-const double2 = arr.map(num => num * 2) // it return array after the modification
+const double2 = arr.map((num) => num * 2); // it return array after the modification
 console.log(double2);
 
 // destructuring
 
-const color = ['red','green','yellow']
+const color = ["red", "green", "yellow"];
 // const [first,second,third] = color
-const [,,third] = color
+const [, , third] = color;
 
 // console.log(first);
 // console.log(second);
 console.log(third); // skiped item
 
 const user = {
-    name: "Ritik",
-    age: "24",
-    city: "Delhi"
-}
+  name: "Ritik",
+  age: "24",
+  city: "Delhi",
+};
 
-const {name, city} = user // object destructrue
+const { name, city } = user; // object destructrue
 console.log(name);
 console.log(city);
 
-const {name:username} = user // Renaming varibale
+const { name: username } = user; // Renaming varibale
 console.log(username);
 
-const greet = ({name, city}) => {
-    console.log(`My name is ${name} from ${city} `);
-}
+const greet = ({ name, city }) => {
+  console.log(`My name is ${name} from ${city} `);
+};
 
-greet({name: "Ritik", city: "Dilhi"})
+greet({ name: "Ritik", city: "Dilhi" });
 
 // error handling
 
@@ -91,36 +92,64 @@ try {
 
   nonExistentFunction(); // ❌ Will cause an error
 } catch (error) {
-    console.log("An error occur", error)
+  console.log("An error occur", error);
   // Code that handles the error
 } finally {
   // (Optional) Code that runs no matter what
-  console.log("this will run regardless")
+  console.log("this will run regardless");
   console.log("");
 }
 
 // JSON parse/stringify
 
-const jsonString = JSON.stringify(user) // covert js object into JSON
+const jsonString = JSON.stringify(user); // covert js object into JSON
 console.log(jsonString);
 
-const newUser = JSON.parse(jsonString) // convert JSON into JS object
+const newUser = JSON.parse(jsonString); // convert JSON into JS object
 console.log(newUser);
 
 // Currying
 
 // Currying is a technique where a function, instead of taking all arguments at once, takes them one at a time, returning a new function for each argument until all are provided.
 
-function add(a,b) {
-    return a+b
+function add(a, b) {
+  return a + b;
 }
 
-console.log(add(4,8))
+console.log(add(4, 8));
 
-function add1(a){
-    return function(b){
-        return a+b
-    }
+function add1(a) {
+  return function (b) {
+    return a + b;
+  };
 }
 
 console.log(add1(2)(12));
+console.log("");
+
+//  clouser
+
+function x() {
+  let a = 6;
+  function y() {
+    console.log(a);
+  }
+  a = 10;
+  return y; // it return the function along with its environment
+}
+var z = x();
+console.log(z);
+z();
+
+function a() {
+  let x = 100;
+  function b() {
+    let y = 8;
+    function c() {
+      console.log(x, y);
+    }
+    c();
+  }
+  b();
+}
+a();

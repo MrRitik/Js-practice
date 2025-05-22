@@ -5,6 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Js practice</title>
+    <style>
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .grand{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 200px auto;
+        }
+        .father{
+            width: 130px;
+            height: 130px;
+            background-color: blue;
+        }
+        .child{
+            width: 60px;
+            height: 60px;
+            background-color: green;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,6 +42,11 @@
     <button onclick="console.log(this)">This keyword</button>
     <input type="text" name="lan" value="English">
     <input type="text" name="lan" value="Hindi">
+    <div class="grand">
+        <div class="father">
+            <div class="child"></div>
+        </div>
+    </div>
     <script src="dom.js"></script>
 </body>
 
