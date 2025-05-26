@@ -218,7 +218,7 @@ setTimeout(()=> {
 async function handlePromises() {
   console.log("this console will be printed");
   const data = await newP;
-  console.log("this console will print after the promis is resolved") // it secepend the newP until it resolved
+  console.log("this console will print after the promis is resolved") // it suspend the newP until it resolved
   console.log(data);
 }
 

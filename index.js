@@ -232,7 +232,7 @@ function fun3() {
 fun3(); // window but in use strict it is undifined
 // substuation it will replace the value of this keyword to global object if it is undifened or null except in strict mode
 
-window.fun3(); // window
+// window.fun3(); // window
 
 // this inside object
 
