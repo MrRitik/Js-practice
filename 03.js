@@ -154,6 +154,59 @@ function a() {
 }
 a();
 
+// promises
+
+let p = new Promise((resolve, reject) => {
+  let sucess = false;
+  setTimeout(() => {
+    if (sucess) {
+      resolve("promises full filled");
+    } else {
+      reject("promises is not full filled");
+    }
+  }, 1000);
+});
+
+p.then((res) => {
+  console.log(res);
+}).catch((err) => console.log(err));
+
+// promises all
+
+const p1 = new Promise((resolve, reject) => {
+  resolve("p1 is resolved");
+});
+const p2 = new Promise((resolve, reject) => {
+  resolve("p2 is resolved");
+});
+const p3 = new Promise((resolve, reject) => {
+  resolve("p3 is resolved");
+});
+
+// Promise.all([p1,p2,p3]).then(mes => console.log(mes))
+
+Promise.race([p1, p2, p3]).then((message) => console.log(message));
+
+// promises chaning
+
+new Promise((resolve, reject) => {
+  resolve(1);
+})
+  .then((result) => {
+    console.log("Step 1:", result);
+    return result * 2; 
+  })
+  .then((result) => {
+    console.log("Step 2:", result);
+    return result * 3;
+  })
+  .then((result) => {
+    console.log("Step 3:", result);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
 // JSON & APIs
 async function fetchUsers() {
   try {
@@ -176,8 +229,4 @@ async function fetchUsers() {
   }
 }
 
-fetchUsers();
-  
-
-
-
+// fetchUsers();
