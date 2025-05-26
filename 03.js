@@ -171,6 +171,25 @@ p.then((res) => {
   console.log(res);
 }).catch((err) => console.log(err));
 
+// promises chaning
+
+new Promise((resolve, reject) => {
+  resolve(1);
+})
+  .then((result) => {
+    console.log("Step 1:", result);
+    return result * 2;
+  })
+  .then((result) => {
+    console.log("Step 2:", result);
+    return result * 3;
+  })
+  .then((result) => {
+    console.log("Step 3:", result);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 // promises all
 
 const p1 = new Promise((resolve, reject) => {
@@ -185,27 +204,25 @@ const p3 = new Promise((resolve, reject) => {
 
 // Promise.all([p1,p2,p3]).then(mes => console.log(mes))
 
-Promise.race([p1, p2, p3]).then((message) => console.log(message));
+// Promise.race([p1, p2, p3]).then((message) => console.log(message));
 
-// promises chaning
 
-new Promise((resolve, reject) => {
-  resolve(1);
-})
-  .then((result) => {
-    console.log("Step 1:", result);
-    return result * 2; 
-  })
-  .then((result) => {
-    console.log("Step 2:", result);
-    return result * 3;
-  })
-  .then((result) => {
-    console.log("Step 3:", result);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+// async await
+
+let newP = new Promise((resolve, reject) => {
+setTimeout(()=> {
+  resolve("New Promises is resolved after 2 sec")
+},2000)
+});
+
+async function handlePromises() {
+  console.log("this console will be printed");
+  const data = await newP;
+  console.log("this console will print after the promis is resolved") // it secepend the newP until it resolved
+  console.log(data);
+}
+
+handlePromises();
 
 // JSON & APIs
 async function fetchUsers() {
@@ -229,4 +246,4 @@ async function fetchUsers() {
   }
 }
 
-// fetchUsers();
+fetchUsers();
