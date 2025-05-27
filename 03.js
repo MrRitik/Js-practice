@@ -206,7 +206,6 @@ const p3 = new Promise((resolve, reject) => {
 
 // Promise.race([p1, p2, p3]).then((message) => console.log(message));
 
-
 // async await
 
 let newP = new Promise((resolve, reject) => {
@@ -223,6 +222,8 @@ async function handlePromises() {
 }
 
 handlePromises();
+
+// put , patch, get , post
 
 // JSON & APIs
 async function fetchUsers() {
@@ -247,3 +248,6 @@ async function fetchUsers() {
 }
 
 fetchUsers();
+
+
+
