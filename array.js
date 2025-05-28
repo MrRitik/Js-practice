@@ -3,21 +3,21 @@
 // array from()
 // used to create a new array instance from string, set , argument
 
-console.log(Array.from("Ritik"));
+console.log(Array.from("Ritik")); // [ 'R', 'i', 't', 'i', 'k' ]
 
 const set = new Set(["foo", "bar", "baz", "foo"]); // Set { 'foo', 'bar', 'baz' } it store only unique value
-console.log(Array.from(set));
+console.log(Array.from(set)); // [ 'foo', 'bar', 'baz' ]
 
 function myFunc() {
   const args = Array.from(arguments);
-  console.log(args);
+  console.log(args); // [ 'a', 'b', 'c' ]
 }
 myFunc("a", "b", "c");
 
 // isArray method
-console.log(Array.isArray([1, 3, 5]));
-console.log(Array.isArray("[]"));
-console.log(Array.isArray(new Array("a", "b", "c", "d")));
+console.log(Array.isArray([1, 3, 5])); // true
+console.log(Array.isArray("[]")); // false
+console.log(Array.isArray(new Array("a", "b", "c", "d"))); // true
 
 // Array.of
 console.log(Array.of("foo", 2, "bar", true)); // it create Array regardless of number or type of the arguments
@@ -47,12 +47,12 @@ console.log(num); // [ 1, [ 2, 3 ], 4, 'a', 'b', [ 'c', [ 'd' ] ] ]
 // Array.prototype.copyWithin()
 //  copies part of this array to another location in the same array and returns this array without modifying its length.
 let word = ["x", "r", "r", "a", "y"];
-console.log(word.copyWithin(0, 3, 4));
+console.log(word.copyWithin(0, 3, 4)); // [ 'a', 'r', 'r', 'a', 'y' ]
 
 //Array.prototype.entries()
 // It returns an iterator, not an array.
 const iterator = array1.entries();
-console.log(iterator.next().value);
+console.log(iterator.next().value); // [ 0, 'a' ]
 console.log(iterator.next().value);
 
 for (const [index, value] of array1.entries()) {
@@ -65,20 +65,20 @@ for (const [index, value] of array1.entries()) {
 // const nums = [2, 4, 6, 8];
 const nums = [2, 4, 6, 8, 11];
 const allEven = nums.every((num) => num % 2 === 0);
-console.log(allEven);
+console.log(allEven); // false
 
-// Array.prototype.fill()
+// Array.prototype.fill() it return static value.
 const arra = [1, 2, 3, 4, 5];
 arra.fill(9, 1, 4); // fill with 9 from index 1 to 3 
-console.log("fill "+arra);
+console.log("fill "+arra); // fill 1,9,9,9,5
 
 // Array.prototype.filter()
 console.log(nums.filter((num) => num > 2));
 
 // Array.prototype.find()
 // this method returns the first element in the array that satisfies a provided testing function. If no element satisfies the condition, it returns undefined.
-console.log(nums.find((num) => num > 70));
-console.log(nums.find((num) => num > 7));
+console.log(nums.find((num) => num > 70)); // undefined
+console.log(nums.find((num) => num > 7)); // 8
 
 // Array.prototype.findLast()
 console.log(nums.findLast((num) => num > 4));

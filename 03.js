@@ -209,22 +209,90 @@ const p3 = new Promise((resolve, reject) => {
 // async await
 
 let newP = new Promise((resolve, reject) => {
-setTimeout(()=> {
-  resolve("New Promises is resolved after 2 sec")
-},2000)
+  setTimeout(() => {
+    resolve("New Promises is resolved after 2 sec");
+  }, 2000);
 });
 
 async function handlePromises() {
   console.log("this console will be printed");
   const data = await newP;
-  console.log("this console will print after the promis is resolved") // it suspend the newP until it resolved
+  console.log("this console will print after the promis is resolved"); // it suspend the newP until it resolved
   console.log(data);
 }
 
 handlePromises();
 
 // put , patch, get , post
+// GET
 
+fetch("https://api.example.com/data")
+  .then((res) => res.json)
+  .then((data) => console.log(data).catch((err) => console.log(err)));
+
+// POST
+fetch("https://api.example.com/data", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ name: "Ritik", age: 23 }),
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+// or
+fetch("https://api.example.com/upload", {
+  method: "POST",
+  body: formData, // no need to set Content-Type
+})
+  .then((res) => res.json)
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+// PUT
+// update or replace entirely
+
+fetch("https://api.example.com/data", {
+  method: "PUT",
+  headers: {
+    "Content-Type": "json/application",
+  },
+  body: JSON.stringify({ name: "Sahil", age: 24 }),
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+// PATCH
+// Used to modify part of a resource
+fetch("https://api.example.com/data", {
+  method: "PATCH",
+  headers: {
+    "Content-Type": "json/application",
+  },
+  body: JSON.stringify({ age: 24 }),
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+// DELETE
+
+fetch("https://example.com/data/1", {
+  method: "DELETE",
+})
+  .then((res) => {
+    if (res.ok) {
+      console.log("Data is Deleted");
+    } else {
+      console.log("Delete failed");
+    }
+  })
+  .catch((err) => console.log(err));
+
+  
 // JSON & APIs
 async function fetchUsers() {
   try {
@@ -248,6 +316,3 @@ async function fetchUsers() {
 }
 
 fetchUsers();
-
-
-
