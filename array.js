@@ -45,6 +45,7 @@ const num = num1.concat(num2);
 console.log(num); // [ 1, [ 2, 3 ], 4, 'a', 'b', [ 'c', [ 'd' ] ] ]
 
 // Array.prototype.copyWithin()
+// copyWithin(target, start, end)
 //  copies part of this array to another location in the same array and returns this array without modifying its length.
 let word = ["x", "r", "r", "a", "y"];
 console.log(word.copyWithin(0, 3, 4)); // [ 'a', 'r', 'r', 'a', 'y' ]
@@ -69,8 +70,8 @@ console.log(allEven); // false
 
 // Array.prototype.fill() it return static value.
 const arra = [1, 2, 3, 4, 5];
-arra.fill(9, 1, 4); // fill with 9 from index 1 to 3 
-console.log("fill "+arra); // fill 1,9,9,9,5
+arra.fill(9, 1, 4); // fill with 9 from index 1 to 3
+console.log("fill " + arra); // fill 1,9,9,9,5
 
 // Array.prototype.filter()
 console.log(nums.filter((num) => num > 2));
@@ -122,7 +123,7 @@ const matrix = [
   [7, 8, 9],
 ];
 
-console.log(matrix.join());
+console.log(matrix.join()); // 1,2,3,4,5,6,7,8,9
 
 // Array.prototype.keys()
 const i = pets.keys(); // change into Array Iterator
@@ -142,9 +143,11 @@ console.log(pets.pop());
 
 // Array.prototype.push()
 //  adds the specified elements to the end of an array and returns the new length of the array
-console.log(pets.length); // before
+console.log(pets.length); // before 4
 
-console.log(pets.push("snake")); // after
+console.log(pets.push("snake")); // after 5
+console.log(pets);
+
 
 // Array.prototype.reverse()
 console.log(pets.reverse());
@@ -155,11 +158,11 @@ console.log(pets.shift());
 
 // Array.prototype.unshift()
 // adds the specified elements to the beginning of an array and returns the new length of the array.
-console.log(pets.unshift("mouse", "rabbit"));
-console.log(pets);
+console.log(pets.unshift("mouse", "rabbit")); // 6
+console.log(pets); // [ 'mouse', 'rabbit', 'dog', 'bat', 'dog', 'cat' ]
 
 // Array.prototype.slice()
-console.log(pets.slice(1, 3)); // it return array
+console.log(pets.slice(1, 3)); // it return array [ 'rabbit', 'dog' ]
 
 // Array.prototype.some()
 // whether at least one element in the array passes the test implemented by the provided function
@@ -172,18 +175,19 @@ console.log(pets.sort()); // it change the original array but toSorted it return
 
 // Array.prototype.splice()
 // array.splice(start, deleteCount, item1, item2, ...)
+// changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
 // it change the original array but toSpliced() does not chnage the original it give a new array
 
 const arr4 = ["a", "b", "c", "d"];
 const remove = arr4.splice(1, 2);
-console.log(arr4);
+console.log(arr4); // ["a","d"]
 console.log(remove);
 
 arr4.splice(1, 0, "r", "k");
-console.log(arr4);
+console.log(arr4); // ["a","r"."k","d"]
 
 arr4.splice(1, 2, "b", "c");
-console.log(arr4);
+console.log(arr4); // ["a","b","c","d"]
 
 // Array.prototype.toLocaleString()
 const Array1 = [1, "a", new Date("27 May 2025 20:15:00 UTC")];
@@ -204,7 +208,7 @@ console.log(matrix.toString());
 
 // Array.prototype.with()
 // arrayInstance.with(index, value)
-console.log([1, 2, 3, 4, 5].with(1, 99)); // it replace index 1 with 99 value
+console.log([1, 2, 3, 4, 5].with(1, 99)); // it replace index 1 with 99 value [ 1, 99, 3, 4, 5 ]
 
 // Array.prototype.reduce()
 const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
